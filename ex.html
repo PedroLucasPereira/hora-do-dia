@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+
+    <section>
+        <div id="msg">Carregando...</div>
+        <img id="imagem" src="fototarde.jpg" alt="Foto do período do dia">
+    </section>
+
+    <footer>
+        <p>&copy; by Pedro Lucas</p>
+    </footer>
+
+    <script>
+        function carregar() {
+            var msg = document.getElementById('msg');
+            var img = document.getElementById('imagem');
+            var data = new Date();
+            var hora = data.getHours();
+            //var hora = 9; //para verificar 
+            msg.innerHTML = `Agora são ${hora} horas.`;
+
+            if (hora >= 0 && hora < 12) {
+                // Bom Dia!
+                img.src = 'fotomanha.jpg';
+                document.body.style.background = '#f1e6b2';
+                msg.innerHTML += '<br>Bom dia !';
+            } else if (hora >= 12 && hora < 18) {
+                // Boa Tarde!
+                img.src = 'fototarde.jpg';
+                document.body.style.background = '#fdbb63';
+                msg.innerHTML += '<br>Boa tarde !';
+            } else {
+                // Boa Noite!
+                img.src = 'fotonoite.jpg';
+                document.body.style.background = '#202030';
+                msg.innerHTML += '<br>Boa noite !';
+            }
+        }
+    </script>
+</body>
+</html>
